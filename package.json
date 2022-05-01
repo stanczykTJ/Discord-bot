@@ -1,14 +1,27 @@
 {
   "name": "discord-bot",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "node ./src/app.js"
   },
   "author": "Tomasz Jank",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^13.6.0"
+    "discord.js": "^13.6.0",
+    "dotenv": "^16.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stanczykTJ/Discord-bot.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/stanczykTJ/Discord-bot/issues"
+  },
+  "homepage": "https://github.com/stanczykTJ/Discord-bot#readme",
+  "description": "",
+  "devDependencies": {
+    "nodemon": "^2.0.16"
   }
 }
