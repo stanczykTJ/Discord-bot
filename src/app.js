@@ -1,5 +1,5 @@
 require("dotenv").config();
-const { Client, Intents, Message } = require("discord.js");
+const { Client, Intents, Permissions, Guild } = require("discord.js");
 const { promises: fs } = require("fs")
 
 //Function that appends data to logs.txt file in Logs directory
@@ -14,13 +14,22 @@ const client = new Client({
 });
 
 client.on("messageCreate", (Message) => {
-    try{
-        write(Message.content); //Use write function to write user's message to logs.txt file in Logs directory
-        console.log(`Message written succesfully with content: ${Message.content}`)
+    if(Message.content.startsWith(".kick")) {
+        if(!Message.member.roles.cache.has("970350869495296030")) return Message.reply("You cannot kick or ban members!");
+        var targetedUser = Message.mentions.members.first();
+        if(!targetedUser) return Message.reply("Not a valid user!");
+        targetedUser.kick();
+        return Message.reply("User succesfully kicked");
     }
-    catch(err){
-        console.log(err);
+    else if(Message.content.startsWith(".ban")) {
+        if(!Message.member.roles.cache.has("970350869495296030")) return Message.reply("You cannot kick or ban members!");
+        var targetedUser = Message.mentions.members.first();
+        if(!targetedUser) return Message.reply("Not a valid user!");
+        //add var banReason here later
+        targetedUser.ban({reason: banReason});
+        return Message.reply(`User ${targetedUser.displayName} succesfully banned for ${banReason}`);
     }
-});
+
+})
 
 client.login(process.env.DISCORDJS_BOT_TOKEN);
