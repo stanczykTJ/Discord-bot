@@ -26,6 +26,10 @@ client.on("messageCreate", (Message) => {
         let targetedUser = Message.mentions.members.first();
         if (!targetedUser) return Message.reply("Not a valid user!");
         //add let banReason here later
+        if(!Message.content.includes(" | ")) return Message.reply("You didn't write a reason!");
+        let index = Message.content.indexOf("|");
+        let banReason = Message.content.substring(index + 1).trim();
+        //add validation if banReason not empty!!!
         targetedUser.ban({ reason: banReason });
         return Message.reply(`User ${targetedUser.displayName} succesfully banned for ${banReason}`);
     }
