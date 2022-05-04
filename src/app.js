@@ -18,8 +18,7 @@ const client = new Client({
 
 client.on("messageCreate", (Message) => {
     if(!Message.content.startsWith(".")) return;
-    let command = Message.content.split(" ")
-    console.log(command[0]);
+    let command = Message.content.split(" ");
     switch (command[0]) {
         case ".kick":
             kickUser(Message);
