@@ -1,14 +1,14 @@
 require("dotenv").config();
 require("./methods")
-const { Client, Intents, Permissions, Guild, Message } = require("discord.js");
+const { Client, Intents } = require("discord.js");
 const { promises: fs } = require("fs");
 const { kickUser, banUser, summonBot } = require("./methods");
 require("./methods");
 
 //Function that appends data to logs.txt file in Logs directory (not used for now)
-const write = async (data) => {
-    await fs.appendFile("../Logs/logs.txt", `${data} \n`);
-}
+//const write = async (data) => {
+//    await fs.appendFile("../Logs/logs.txt", `${data} \n`);
+//}
 
 const client = new Client({
     intents: [
